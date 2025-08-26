@@ -6,7 +6,7 @@ This guide explains how to deploy your Django project (`Corevai`) on a domain us
 
 ## 1. Point Domain to Server
 
-1. Log in to your domain DNS manager (where `brewyourbrandofficial.com` is registered).
+1. Log in to your domain DNS manager (where `domain.com` is registered).
 2. Add an A record:
 
 ```
@@ -16,12 +16,12 @@ Value: 34.67.91.119
 TTL: Auto / 3600
 ```
 
-- This points: `myhr.brewyourbrandofficial.com` → `34.67.91.119`.
+- This points: `domain.com` → `44.66.88.00`.
 
 3. Test the DNS resolution:
 
 ```bash
-ping myhr.brewyourbrandofficial.com
+ping domain.com
 ```
 
 ---
@@ -45,7 +45,7 @@ Add the following configuration:
 
 ```nginx
 server {
-    server_name myhr.brewyourbrandofficial.com;
+    server_name domain.com;
 
     location / {
         proxy_pass http://127.0.0.1:8000;   # Gunicorn/Django running on port 8000
@@ -80,7 +80,7 @@ sudo apt install certbot python3-certbot-nginx -y
 Run Certbot to generate SSL:
 
 ```bash
-sudo certbot --nginx -d myhr.brewyourbrandofficial.com
+sudo certbot --nginx -d domain.com
 ```
 
 This will:
@@ -91,7 +91,7 @@ This will:
 After success, your site will be live at:
 
 ```
-https://myhr.brewyourbrandofficial.com
+https://domain.com
 ```
 
 ---
